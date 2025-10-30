@@ -565,48 +565,6 @@ function birdsite_content_header() {
 //////////////////////////////////////////////////////
 // Add hook content end
 function birdsite_content_footer() {
-        $birdsite_html = apply_filters( 'birdsite_content_footer', '' );
-        echo $birdsite_html;
+	$birdsite_html = apply_filters( 'birdsite_content_footer', '' );
+	echo $birdsite_html;
 }
-
-//////////////////////////////////////////////////////
-// Register the "Works" custom post type
-function birdsite_register_works_post_type() {
-
-        $labels = array(
-                'name'                  => __( 'Works', 'birdsite' ),
-                'singular_name'         => __( 'Work', 'birdsite' ),
-                'menu_name'             => __( 'Works', 'birdsite' ),
-                'name_admin_bar'        => __( 'Work', 'birdsite' ),
-                'add_new'               => __( 'Add New', 'birdsite' ),
-                'add_new_item'          => __( 'Add New Work', 'birdsite' ),
-                'new_item'              => __( 'New Work', 'birdsite' ),
-                'edit_item'             => __( 'Edit Work', 'birdsite' ),
-                'view_item'             => __( 'View Work', 'birdsite' ),
-                'all_items'             => __( 'All Works', 'birdsite' ),
-                'search_items'          => __( 'Search Works', 'birdsite' ),
-                'parent_item_colon'     => __( 'Parent Works:', 'birdsite' ),
-                'not_found'             => __( 'No works found.', 'birdsite' ),
-                'not_found_in_trash'    => __( 'No works found in Trash.', 'birdsite' ),
-        );
-
-        $args = array(
-                'labels'                => $labels,
-                'public'                => true,
-                'publicly_queryable'    => true,
-                'show_ui'               => true,
-                'show_in_menu'          => true,
-                'show_in_rest'          => true,
-                'query_var'             => true,
-                'rewrite'               => array( 'slug' => 'works' ),
-                'capability_type'       => 'post',
-                'has_archive'           => true,
-                'hierarchical'          => false,
-                'menu_position'         => 20,
-                'menu_icon'             => 'dashicons-portfolio',
-                'supports'              => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions' ),
-        );
-
-        register_post_type( 'works', $args );
-}
-add_action( 'init', 'birdsite_register_works_post_type' );
